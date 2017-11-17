@@ -1,5 +1,6 @@
 import json
 import operator
+from random import randint
 from sets import Set
 
 import nltk
@@ -7,7 +8,7 @@ from django.db.models import Sum, Max, F, Value
 from django.http import Http404
 from django.http import JsonResponse
 
-from text_parser.models import Text, Keyword, GameId
+from text_parser.models import Text, Keyword, GameId, Site
 
 
 def add_article(request):
@@ -35,6 +36,14 @@ def add_article(request):
         return JsonResponse({'msg': 'just POST !'}, status=400)
 
 
+# def update_from_web_check():
+#     return randint(0,5) == 3
+# def update_from_web(topic):
+#     sites = Site.objects.filter(topic=topic)
+#     if len(sites) > 0:
+#         index = randint(0, len(sites))
+#         url = sites.get(index)
+
 def get_keywords(request):
     """
     Return all keywords of this topic. Each keyword's rank is summed up in all texts it exists in.
@@ -47,6 +56,9 @@ def get_keywords(request):
         topic = param.get('topic')
 
         if topic is not None:
+            # if update_from_web_check():
+            #     update_from_web(topic)
+
             keywords = Keyword.objects.filter(topic=topic).values('keyword').annotate(Sum('rank')).order_by(
                 '-rank__sum')
             response = []
@@ -239,5 +251,23 @@ def is_sentence_complete(request):
             return JsonResponse({'msg': 'bad input'}, status=400)
         except TypeError:
             return JsonResponse({'msg': 'bad input'}, status=400)
+    else:
+        return JsonResponse({'msg': 'just POST'}, status=400)
+
+
+def add_site(request):
+    """
+    Adds site to DB.
+
+    :param request: topic
+                    url
+    :return: {'msg':'site added successfully' }
+    """
+    if request.method == 'POST':
+        url = request.POST.get('url')
+        topic = request.POST.get('topic')
+
+        Site(topic=topic, url=url).save()
+        return JsonResponse({'msg': 'site added successfully'}, status=2)
     else:
         return JsonResponse({'msg': 'just POST'}, status=400)

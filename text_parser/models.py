@@ -34,3 +34,8 @@ class GameId(models.Model):
             aggregated_texts = aggregated_texts + '\n' + text.text
 
         return aggregated_texts
+
+
+class Site(models.Model):
+    topic = models.CharField(max_length=20)
+    url = models.CharField(max_length=50)

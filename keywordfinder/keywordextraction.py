@@ -162,9 +162,6 @@ def get_keywordclassifier(preload, classifier_type):
     """
     Returns a keyword classifier trained and tested on dataset derived from Crowd500 [Marujo2012]
     """
-    cwd = os.getcwd()
-    os.chdir('keywordfinder')
-
     if preload == 1:
         train_XY = pickle.load(open('saved/trainXY_crowd500.pkl', 'rb'))
         test_XY = pickle.load(open('saved/testXY_crowd500.pkl', 'rb'))
@@ -224,7 +221,6 @@ def get_keywordclassifier(preload, classifier_type):
         in_sample_acc.mean(), out_sample_acc.mean())
     print '---------------------------------------------------------------------------------------------------------'
 
-    os.chdir(cwd)
     return {'model': model, 'train_XY': train_XY, 'test_XY': test_XY}
 
 
@@ -244,8 +240,6 @@ def extract_keywords(text, keyword_classifier, top_k, preload):
     Returns top k keywords using specified keyword classifier
     """
     # pre-processing to enable tf-idf representation
-    cwd = os.getcwd()
-    os.chdir('keywordfinder')
     if preload == 1:
         preprocessing = pickle.load(open('saved/tfidf_preprocessing.pkl', 'rb'))
         dictionary = preprocessing['dictionary']
@@ -277,7 +271,6 @@ def extract_keywords(text, keyword_classifier, top_k, preload):
 
     chosen_keywords = [(candidate_keywords[j[0]],j[1]) for j in sorted_keywords[:top_k]]
 
-    os.chdir(cwd)
     return chosen_keywords
 
 

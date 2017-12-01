@@ -25,7 +25,7 @@ SECRET_KEY = 'bjmfh7$rrx!d@6=-g98*hh+oei*o=q0t_ov)70p=t5_ba#zq$r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,9 +77,12 @@ WSGI_APPLICATION = 'BSProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'bs_project',
+                'USER': 'emad',
+                'HOST': 'localhost',
+                'PORT': '',
+            }
 }
 
 

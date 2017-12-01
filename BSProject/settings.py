@@ -79,7 +79,8 @@ DATABASES = {
     'default': {
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME': 'bs_project',
-                'USER': 'emad',
+                'USER': 'bs_project_user',
+                'PASSWORD': 'itsemadopen',
                 'HOST': 'localhost',
                 'PORT': '',
             }

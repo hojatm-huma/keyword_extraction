@@ -1,0 +1,6 @@
+numpy
+nltk && stopwords
+gensim
+sklearn
+wikiwords
+

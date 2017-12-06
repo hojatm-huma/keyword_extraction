@@ -13,6 +13,9 @@ import string
 import nltk
 from nltk.corpus import stopwords
 
+
+import sys
+
 stoplist = stopwords.words('english')
 
 from gensim import corpora, models, similarities
@@ -25,9 +28,17 @@ from sklearn.cross_validation import cross_val_score
 from features import *
 
 
+
+
 ##################################################################
 # functions to get train/test set and extract features from text #
 ##################################################################
+def get_parsed_data_path():
+    """
+    returns curent file path
+    :return:
+    """
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'saved')
 
 def get_crowdd500_data(set_type):
     """
@@ -163,18 +174,22 @@ def get_keywordclassifier(preload, classifier_type):
     Returns a keyword classifier trained and tested on dataset derived from Crowd500 [Marujo2012]
     """
     if preload == 1:
-        train_XY = pickle.load(open('saved/trainXY_crowd500.pkl', 'rb'))
-        test_XY = pickle.load(open('saved/testXY_crowd500.pkl', 'rb'))
+        print 'semi path:', get_parsed_data_path()
+        print 'full path:', os.path.join(get_parsed_data_path(), 'trainXY_crowd500.pkl')
+
+
+        train_XY = pickle.load(open(os.path.join(get_parsed_data_path(), 'trainXY_crowd500.pkl'), 'rb'))
+        test_XY = pickle.load(open(os.path.join(get_parsed_data_path(),'testXY_crowd500.pkl'), 'rb'))
         if classifier_type == 'logistic':
-            model = pickle.load(open('saved/logisticregression_crowd500.pkl', 'rb'))
+            model = pickle.load(open(os.path.join(get_parsed_data_path(),'logisticregression_crowd500.pkl'), 'rb'))
         else:
-            model = pickle.load(open('saved/randomforest_crowd500.pkl', 'rb'))
+            model = pickle.load(open(os.path.join(get_parsed_data_path(),'randomforest_crowd500.pkl'), 'rb'))
     else:
         # get training data from crowd500 corpus
         traindata = get_crowdd500_data('train')
         tx_traindata = to_tfidf(traindata['documents'])
         train_XY = get_features_labels(traindata, tx_traindata['corpus'], tx_traindata['dictionary'], 1)
-        pickle.dump(train_XY, open('saved/trainXY_crowd500.pkl', 'wb'))
+        pickle.dump(train_XY, open(os.path.join(get_parsed_data_path(),'trainXY_crowd500.pkl'), 'wb'))
 
         # get test data from crowd500 corpus
         testdata = get_crowdd500_data('test')
@@ -189,7 +204,7 @@ def get_keywordclassifier(preload, classifier_type):
         tx_testdata = {'dictionary': dictionary, 'corpus': corpus_tfidf, 'tfidf_model': tfidf}
 
         test_XY = get_features_labels(testdata, tx_testdata['corpus'], tx_testdata['dictionary'], 1)
-        pickle.dump(test_XY, open('saved/testXY_crowd500.pkl', 'wb'))
+        pickle.dump(test_XY, open(os.path.join(get_parsed_data_path(),'testXY_crowd500.pkl'), 'wb'))
 
         #  to train random forest on same training data as logistic regression classifier,
         #  uncomment these lines and comment lines above
@@ -200,11 +215,11 @@ def get_keywordclassifier(preload, classifier_type):
         if classifier_type == 'logistic':
             model = LogisticRegression()
             model = model.fit(train_XY['features'], train_XY['labels'])
-            pickle.dump(model, open('saved/logisticregression_crowd500.pkl', 'wb'))
+            pickle.dump(model, open(os.path.join(get_parsed_data_path(),'logisticregression_crowd500.pkl'), 'wb'))
         else:
             model = RandomForestClassifier(n_estimators=10)
             model = model.fit(train_XY['features'], train_XY['labels'])
-            pickle.dump(model, open('saved/randomforest_crowd500.pkl', 'wb'))
+            pickle.dump(model, open(os.path.join(get_parsed_data_path(),'randomforest_crowd500.pkl'), 'wb'))
 
             # show performance of classifier
     in_sample_acc = cross_val_score(model, train_XY['features'], train_XY['labels'], cv=4)
@@ -241,7 +256,7 @@ def extract_keywords(text, keyword_classifier, top_k, preload):
     """
     # pre-processing to enable tf-idf representation
     if preload == 1:
-        preprocessing = pickle.load(open('saved/tfidf_preprocessing.pkl', 'rb'))
+        preprocessing = pickle.load(open(os.path.join(get_parsed_data_path(),'tfidf_preprocessing.pkl'), 'rb'))
         dictionary = preprocessing['dictionary']
         tfidf = preprocessing['tfidf_model']
     else:
@@ -249,7 +264,7 @@ def extract_keywords(text, keyword_classifier, top_k, preload):
         tx_traindata = to_tfidf(traindata['documents'])
         dictionary = tx_traindata['dictionary']
         tfidf = tx_traindata['tfidf_model']
-        pickle.dump({'dictionary': dictionary, 'tfidf_model': tfidf}, open('saved/tfidf_preprocessing.pkl', 'wb'))
+        pickle.dump({'dictionary': dictionary, 'tfidf_model': tfidf}, open(os.path.join(get_parsed_data_path(),'tfidf_preprocessing.pkl'), 'wb'))
 
     text_processed = [remove_punctuation(word) for word in text.lower().split() if word not in stoplist]
     corpus = [dictionary.doc2bow(text_processed)]

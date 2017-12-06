@@ -12,7 +12,11 @@ from gensim import corpora, models, similarities
 from collections import defaultdict
 import wikiwords
 import numpy as np
+import os
 
+
+def get_utils_path():
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), 'utils')
 
 def remove_punctuation(text):
     """
@@ -26,7 +30,8 @@ def get_namedentities(text):
     """
     Returns named entities in text using StanfordNERTagger
     """
-    st = StanfordNERTagger('utils/english.conll.4class.caseless.distsim.crf.ser.gz', 'utils/stanford-ner.jar')
+    st = StanfordNERTagger(os.path.join(get_utils_path(), 'english.conll.4class.caseless.distsim.crf.ser.gz'),
+                           os.path.join(get_utils_path(), 'stanford-ner.jar'))
     ner_tagged = st.tag(text.lower().split())
 
     named_entities = []

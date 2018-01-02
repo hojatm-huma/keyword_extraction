@@ -1,0 +1,2689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <title>OSError at /text_parser/add_article</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    code, pre { font-size: 100%; white-space: pre-wrap; }
+    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th {
+      padding:1px 6px 1px 3px; background:#fefefe; text-align:left;
+      font-weight:normal; font-size:11px; border:1px solid #ddd;
+    }
+    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%; }
+    table td.code pre { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; color: #222; }
+    ul.traceback li.frame { padding-bottom:1em; color:#666; }
+    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
+    div.context { padding:10px 0; overflow:hidden; }
+    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; padding-left: 2px; }
+    div.context ol li pre { display:inline; }
+    div.context ol.context-line li { color:#505050; background-color:#dfdfdf; padding: 3px 2px; }
+    div.context ol.context-line li span { position:absolute; right:32px; }
+    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
+    .user div.context ol li { color:#666; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:#555; text-decoration:none; }
+    .user div.commands a { color: black; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 10px 20px; }
+    #template-not-exist .postmortem-section { margin-bottom: 3px; }
+    #unicode-hint { background:#eee; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+    h2 span.commands { font-size:.7em;}
+    span.commands a:link {color:#5E5694;}
+    pre.exception_value { font-family: sans-serif; color: #666; font-size: 1.5em; margin: 10px 0 10px 0; }
+    .append-bottom { margin-bottom: 10px; }
+  </style>
+  
+  <script type="text/javascript">
+  //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+        // Written by Jonathan Snook, http://www.snook.ca/jon; Add-ons by Robert Nyman, http://www.robertnyman.com
+        var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+        var arrReturnElements = new Array();
+        strClassName = strClassName.replace(/\-/g, "\\-");
+        var oRegExp = new RegExp("(^|\\s)" + strClassName + "(\\s|$)");
+        var oElement;
+        for(var i=0; i<arrElements.length; i++){
+            oElement = arrElements[i];
+            if(oRegExp.test(oElement.className)){
+                arrReturnElements.push(oElement);
+            }
+        }
+        return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+      hideAll(getElementsByClassName(document, 'div', 'pastebin'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block': 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.textContent = s.textContent == uarr ? darr : uarr;
+      return false;
+    }
+    function switchPastebinFriendly(link) {
+      s1 = "Switch to copy-and-paste view";
+      s2 = "Switch back to interactive view";
+      link.textContent = link.textContent.trim() == s1 ? s2: s1;
+      toggle('browserTraceback', 'pastebinTraceback');
+      return false;
+    }
+    //-->
+  </script>
+  
+</head>
+<body>
+<div id="summary">
+  <h1>OSError at /text_parser/add_article</h1>
+  <pre class="exception_value">Java command failed : [u&#39;/usr/bin/java&#39;, &#39;-mx1000m&#39;, &#39;-cp&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;, &#39;edu.stanford.nlp.ie.crf.CRFClassifier&#39;, &#39;-loadClassifier&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz&#39;, &#39;-textFile&#39;, &#39;/tmp/tmpSp3laJ&#39;, &#39;-outputFormat&#39;, &#39;slashTags&#39;, &#39;-tokenizerFactory&#39;, &#39;edu.stanford.nlp.process.WhitespaceTokenizer&#39;, &#39;-tokenizerOptions&#39;, &#39;&quot;tokenizeNLs=false&quot;&#39;, &#39;-encoding&#39;, &#39;utf8&#39;]</pre>
+  <table class="meta">
+
+    <tr>
+      <th>Request Method:</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Request URL:</th>
+      <td>http://127.0.0.1/text_parser/add_article</td>
+    </tr>
+
+    <tr>
+      <th>Django Version:</th>
+      <td>1.11.7</td>
+    </tr>
+
+    <tr>
+      <th>Exception Type:</th>
+      <td>OSError</td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Value:</th>
+      <td><pre>Java command failed : [u&#39;/usr/bin/java&#39;, &#39;-mx1000m&#39;, &#39;-cp&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;, &#39;edu.stanford.nlp.ie.crf.CRFClassifier&#39;, &#39;-loadClassifier&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz&#39;, &#39;-textFile&#39;, &#39;/tmp/tmpSp3laJ&#39;, &#39;-outputFormat&#39;, &#39;slashTags&#39;, &#39;-tokenizerFactory&#39;, &#39;edu.stanford.nlp.process.WhitespaceTokenizer&#39;, &#39;-tokenizerOptions&#39;, &#39;&quot;tokenizeNLs=false&quot;&#39;, &#39;-encoding&#39;, &#39;utf8&#39;]</pre></td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Location:</th>
+      <td>/usr/local/lib/python2.7/dist-packages/nltk/internals.py in java, line 136</td>
+    </tr>
+
+    <tr>
+      <th>Python Executable:</th>
+      <td>/usr/bin/python</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>2.7.13</td>
+    </tr>
+    <tr>
+      <th>Python Path:</th>
+      <td><pre>[&#39;/home/emad/text_parser/bs-project&#39;,
+ &#39;/usr/lib/python2.7&#39;,
+ &#39;/usr/lib/python2.7/plat-x86_64-linux-gnu&#39;,
+ &#39;/usr/lib/python2.7/lib-tk&#39;,
+ &#39;/usr/lib/python2.7/lib-old&#39;,
+ &#39;/usr/lib/python2.7/lib-dynload&#39;,
+ &#39;/usr/local/lib/python2.7/dist-packages&#39;,
+ &#39;/usr/lib/python2.7/dist-packages&#39;,
+ &#39;/usr/lib/pymodules/python2.7&#39;]</pre></td>
+    </tr>
+    <tr>
+      <th>Server time:</th>
+      <td>Thu, 7 Dec 2017 13:19:13 +0000</td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div id="traceback">
+  <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">
+    Switch to copy-and-paste view</a></span>
+  </h2>
+  <div id="browserTraceback">
+    <ul class="traceback">
+      
+        
+        <li class="frame django">
+          <code>/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py</code> in <code>inner</code>
+
+          
+            <div class="context" id="c140566366042808">
+              
+                <ol start="34" class="pre-context" id="pre140566366042808">
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    This decorator is automatically applied to all middleware to ensure that</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    no middleware leaks an exception and that the next middleware in the stack</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    can rely on getting a response instead of an exception.</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    @wraps(get_response, assigned=available_attrs(get_response))</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    def inner(request):</pre></li>
+                
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>        try:</pre></li>
+                
+                </ol>
+              
+              <ol start="41" class="context-line">
+                <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>
+            response = get_response(request)</pre> <span>...</span></li></ol>
+              
+                <ol start='42' class="post-context" id="post140566366042808">
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>        except Exception as exc:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>            response = response_for_exception(request, exc)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>        return response</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre>    return inner</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042808', 'post140566366042808')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366042808')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366042808">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>exc</td>
+                    <td class="code"><pre>OSError(&#39;Java command failed : [u\&#39;/usr/bin/java\&#39;, \&#39;-mx1000m\&#39;, \&#39;-cp\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar\&#39;, \&#39;edu.stanford.nlp.ie.crf.CRFClassifier\&#39;, \&#39;-loadClassifier\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz\&#39;, \&#39;-textFile\&#39;, \&#39;/tmp/tmpSp3laJ\&#39;, \&#39;-outputFormat\&#39;, \&#39;slashTags\&#39;, \&#39;-tokenizerFactory\&#39;, \&#39;edu.stanford.nlp.process.WhitespaceTokenizer\&#39;, \&#39;-tokenizerOptions\&#39;, \&#39;&quot;tokenizeNLs=false&quot;\&#39;, \&#39;-encoding\&#39;, \&#39;utf8\&#39;]&#39;,)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>get_response</td>
+                    <td class="code"><pre>&lt;bound method WSGIHandler._get_response of &lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fd849977e50&gt;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/text_parser/add_article&#39;&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame django">
+          <code>/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py</code> in <code>_get_response</code>
+
+          
+            <div class="context" id="c140566366042016">
+              
+                <ol start="180" class="pre-context" id="pre140566366042016">
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>                break</pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>        if response is None:</pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>            try:</pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre></li>
+                
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>            except Exception as e:</pre></li>
+                
+                </ol>
+              
+              <ol start="187" class="context-line">
+                <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>
+                response = self.process_exception_by_middleware(e, request)</pre> <span>...</span></li></ol>
+              
+                <ol start='188' class="post-context" id="post140566366042016">
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>        # Complain if the view returned None (a common error).</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>        if response is None:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>                view_name = callback.__name__</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042016', 'post140566366042016')"><pre>            else:                                           # CBV</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366042016')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366042016">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>callback</td>
+                    <td class="code"><pre>&lt;function add_article at 0x7fd82bcf95f0&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>e</td>
+                    <td class="code"><pre>OSError(&#39;Java command failed : [u\&#39;/usr/bin/java\&#39;, \&#39;-mx1000m\&#39;, \&#39;-cp\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar\&#39;, \&#39;edu.stanford.nlp.ie.crf.CRFClassifier\&#39;, \&#39;-loadClassifier\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz\&#39;, \&#39;-textFile\&#39;, \&#39;/tmp/tmpSp3laJ\&#39;, \&#39;-outputFormat\&#39;, \&#39;slashTags\&#39;, \&#39;-tokenizerFactory\&#39;, \&#39;edu.stanford.nlp.process.WhitespaceTokenizer\&#39;, \&#39;-tokenizerOptions\&#39;, \&#39;&quot;tokenizeNLs=false&quot;\&#39;, \&#39;-encoding\&#39;, \&#39;utf8\&#39;]&#39;,)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/text_parser/add_article&#39;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver</td>
+                    <td class="code"><pre>&lt;RegexURLResolver &#39;BSProject.urls&#39; (None:None) ^/&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver_match</td>
+                    <td class="code"><pre>ResolverMatch(func=text_parser.views.add_article, args=(), kwargs={}, url_name=add_article, app_names=[], namespaces=[])</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>response</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fd849977e50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>wrapped_callback</td>
+                    <td class="code"><pre>&lt;function add_article at 0x7fd82bcf95f0&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame django">
+          <code>/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py</code> in <code>_get_response</code>
+
+          
+            <div class="context" id="c140566366040648">
+              
+                <ol start="178" class="pre-context" id="pre140566366040648">
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            response = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            if response:</pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>                break</pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>        if response is None:</pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
+                
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            try:</pre></li>
+                
+                </ol>
+              
+              <ol start="185" class="context-line">
+                <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>
+                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>...</span></li></ol>
+              
+                <ol start='186' class="post-context" id="post140566366040648">
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            except Exception as e:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>                response = self.process_exception_by_middleware(e, request)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>        # Complain if the view returned None (a common error).</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>        if response is None:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040648', 'post140566366040648')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366040648')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366040648">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>callback</td>
+                    <td class="code"><pre>&lt;function add_article at 0x7fd82bcf95f0&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_args</td>
+                    <td class="code"><pre>()</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>callback_kwargs</td>
+                    <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>e</td>
+                    <td class="code"><pre>OSError(&#39;Java command failed : [u\&#39;/usr/bin/java\&#39;, \&#39;-mx1000m\&#39;, \&#39;-cp\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar\&#39;, \&#39;edu.stanford.nlp.ie.crf.CRFClassifier\&#39;, \&#39;-loadClassifier\&#39;, \&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz\&#39;, \&#39;-textFile\&#39;, \&#39;/tmp/tmpSp3laJ\&#39;, \&#39;-outputFormat\&#39;, \&#39;slashTags\&#39;, \&#39;-tokenizerFactory\&#39;, \&#39;edu.stanford.nlp.process.WhitespaceTokenizer\&#39;, \&#39;-tokenizerOptions\&#39;, \&#39;&quot;tokenizeNLs=false&quot;\&#39;, \&#39;-encoding\&#39;, \&#39;utf8\&#39;]&#39;,)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/text_parser/add_article&#39;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver</td>
+                    <td class="code"><pre>&lt;RegexURLResolver &#39;BSProject.urls&#39; (None:None) ^/&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>resolver_match</td>
+                    <td class="code"><pre>ResolverMatch(func=text_parser.views.add_article, args=(), kwargs={}, url_name=add_article, app_names=[], namespaces=[])</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>response</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7fd849977e50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>wrapped_callback</td>
+                    <td class="code"><pre>&lt;function add_article at 0x7fd82bcf95f0&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/text_parser/views.py</code> in <code>add_article</code>
+
+          
+            <div class="context" id="c140566366043240">
+              
+                <ol start="23" class="pre-context" id="pre140566366043240">
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>        text = param.get(&#39;text&#39;)</pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>        topic = param.get(&#39;topic&#39;)</pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>        if text is not None and topic is not None:</pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>            t = Text(text=text)</pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>            t.save()</pre></li>
+                
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre></pre></li>
+                
+                </ol>
+              
+              <ol start="30" class="context-line">
+                <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>
+            t.save_keywords(topic)</pre> <span>...</span></li></ol>
+              
+                <ol start='31' class="post-context" id="post140566366043240">
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>            return JsonResponse({&#39;msg&#39;: &#39;added succ.&#39;}, status=200)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>        else:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>            return JsonResponse({&#39;msg&#39;: &#39;bad input.&#39;}, status=400)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>    else:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043240', 'post140566366043240')"><pre>        return JsonResponse({&#39;msg&#39;: &#39;just POST !&#39;}, status=400)</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366043240')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366043240">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>param</td>
+                    <td class="code"><pre>&lt;QueryDict: {u&#39;topic&#39;: [u&#39;tech&#39;], u&#39;text&#39;: [u&#39;&quot;hello world&quot;&#39;]}&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>request</td>
+                    <td class="code"><pre>&lt;WSGIRequest: POST &#39;/text_parser/add_article&#39;&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>t</td>
+                    <td class="code"><pre>&lt;Text: Text object&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text</td>
+                    <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>topic</td>
+                    <td class="code"><pre>u&#39;tech&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/text_parser/models.py</code> in <code>save_keywords</code>
+
+          
+            <div class="context" id="c140566366042232">
+              
+                <ol start="8" class="pre-context" id="pre140566366042232">
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>class Text(models.Model):</pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>    model saving text.</pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>    text = models.TextField()</pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>    def save_keywords(self, topic):</pre></li>
+                
+                </ol>
+              
+              <ol start="15" class="context-line">
+                <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>
+        keywords = RUN.main(self.text)</pre> <span>...</span></li></ol>
+              
+                <ol start='16' class="post-context" id="post140566366042232">
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>        for keyword in keywords:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>            Keyword(topic=topic, text=self, keyword=keyword[0], rank=keyword[1]).save()</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042232', 'post140566366042232')"><pre>class Keyword(models.Model):</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366042232')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366042232">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;Text: Text object&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>topic</td>
+                    <td class="code"><pre>u&#39;tech&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/keywordfinder/RUN.py</code> in <code>main</code>
+
+          
+            <div class="context" id="c140566366041368">
+              
+                <ol start="13" class="pre-context" id="pre140566366041368">
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    # load keyword classifier</pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    preload = 1</pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    classifier_type = &#39;logistic&#39;</pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    keyword_classifier = get_keywordclassifier(preload, classifier_type)[&#39;model&#39;]</pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    # extract top k keywords</pre></li>
+                
+                  <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>    top_k = 15</pre></li>
+                
+                </ol>
+              
+              <ol start="20" class="context-line">
+                <li onclick="toggle('pre140566366041368', 'post140566366041368')"><pre>
+    return extract_keywords(text, keyword_classifier, top_k, preload)</pre> <span>...</span></li></ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366041368')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366041368">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>classifier_type</td>
+                    <td class="code"><pre>&#39;logistic&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>keyword_classifier</td>
+                    <td class="code"><pre>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class=&#39;ovr&#39;, n_jobs=1,
+          penalty=&#39;l2&#39;, random_state=None, solver=&#39;liblinear&#39;, tol=0.0001,
+          verbose=0, warm_start=False)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>preload</td>
+                    <td class="code"><pre>1</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text</td>
+                    <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>top_k</td>
+                    <td class="code"><pre>15</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/keywordfinder/keywordextraction.py</code> in <code>extract_keywords</code>
+
+          
+            <div class="context" id="c140566366043096">
+              
+                <ol start="267" class="pre-context" id="pre140566366043096">
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>        pickle.dump({&#39;dictionary&#39;: dictionary, &#39;tfidf_model&#39;: tfidf}, open(os.path.join(get_parsed_data_path(),&#39;tfidf_preprocessing.pkl&#39;), &#39;wb&#39;))</pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    text_processed = [remove_punctuation(word) for word in text.lower().split() if word not in stoplist]</pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    corpus = [dictionary.doc2bow(text_processed)]</pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    corpus_entry = tfidf[corpus][0]</pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    # generate canddiate keywords</pre></li>
+                
+                </ol>
+              
+              <ol start="274" class="context-line">
+                <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>
+    candidate_keywords = generate_candidates(text)</pre> <span>...</span></li></ol>
+              
+                <ol start='275' class="post-context" id="post140566366043096">
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    if len(candidate_keywords) &lt; top_k:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>        candidate_keywords = text_processed</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    # select from candidate keywords</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    feature_set = extract_features(text, candidate_keywords, corpus_entry, dictionary)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366043096', 'post140566366043096')"><pre>    predicted_prob = keyword_classifier.predict_proba(feature_set[&#39;features&#39;])</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366043096')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366043096">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>corpus</td>
+                    <td class="code"><pre>[[(81, 1), (7485, 1)]]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>corpus_entry</td>
+                    <td class="code"><pre>[(81, 0.33276182071787264), (7485, 0.9430109069743182)]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>dictionary</td>
+                    <td class="code"><pre>&lt;gensim.corpora.dictionary.Dictionary object at 0x7fd82854e790&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>keyword_classifier</td>
+                    <td class="code"><pre>LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class=&#39;ovr&#39;, n_jobs=1,
+          penalty=&#39;l2&#39;, random_state=None, solver=&#39;liblinear&#39;, tol=0.0001,
+          verbose=0, warm_start=False)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>preload</td>
+                    <td class="code"><pre>1</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>preprocessing</td>
+                    <td class="code"><pre>{&#39;dictionary&#39;: &lt;gensim.corpora.dictionary.Dictionary object at 0x7fd82854e790&gt;,
+ &#39;tfidf_model&#39;: &lt;gensim.models.tfidfmodel.TfidfModel object at 0x7fd82bc1fd90&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text</td>
+                    <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text_processed</td>
+                    <td class="code"><pre>[u&#39;hello&#39;, u&#39;world&#39;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>tfidf</td>
+                    <td class="code"><pre>&lt;gensim.models.tfidfmodel.TfidfModel object at 0x7fd82bc1fd90&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>top_k</td>
+                    <td class="code"><pre>15</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>word</td>
+                    <td class="code"><pre>u&#39;world&quot;&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/keywordfinder/keywordextraction.py</code> in <code>generate_candidates</code>
+
+          
+            <div class="context" id="c140566366042088">
+              
+                <ol start="240" class="pre-context" id="pre140566366042088">
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>def generate_candidates(text):</pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    Returns candidate words that occur in named entities, noun phrases, or top trigrams</pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    num_trigrams = 5</pre></li>
+                
+                </ol>
+              
+              <ol start="247" class="context-line">
+                <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>
+    named_entities = get_namedentities(text)</pre> <span>...</span></li></ol>
+              
+                <ol start='248' class="post-context" id="post140566366042088">
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    noun_phrases = get_nounphrases(text)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    top_trigrams = get_trigrams(text, num_trigrams)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>    return list(set.union(set(named_entities), set(noun_phrases), set(top_trigrams)))</pre></li>
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366042088', 'post140566366042088')"><pre>def extract_keywords(text, keyword_classifier, top_k, preload):</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366042088')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366042088">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>num_trigrams</td>
+                    <td class="code"><pre>5</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text</td>
+                    <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/home/emad/text_parser/bs-project/keywordfinder/features.py</code> in <code>get_namedentities</code>
+
+          
+            <div class="context" id="c140566366040216">
+              
+                <ol start="28" class="pre-context" id="pre140566366040216">
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>def get_namedentities(text):</pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    Returns named entities in text using StanfordNERTagger</pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    st = StanfordNERTagger(os.path.join(get_utils_path(), &#39;english.conll.4class.caseless.distsim.crf.ser.gz&#39;),</pre></li>
+                
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>                           os.path.join(get_utils_path(), &#39;stanford-ner.jar&#39;))</pre></li>
+                
+                </ol>
+              
+              <ol start="35" class="context-line">
+                <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>
+    ner_tagged = st.tag(text.lower().split())</pre> <span>...</span></li></ol>
+              
+                <ol start='36' class="post-context" id="post140566366040216">
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    named_entities = []</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>    if len(ner_tagged) &gt; 0:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>        for n in ner_tagged:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>            if n[1] != &#39;O&#39;:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366040216', 'post140566366040216')"><pre>                named_entities.append(remove_punctuation(n[0]))</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366040216')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366040216">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>st</td>
+                    <td class="code"><pre>&lt;nltk.tag.stanford.StanfordNERTagger object at 0x7fd828554f10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>text</td>
+                    <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/usr/local/lib/python2.7/dist-packages/nltk/tag/stanford.py</code> in <code>tag</code>
+
+          
+            <div class="context" id="c140566366041656">
+              
+                <ol start="77" class="pre-context" id="pre140566366041656">
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>    def _cmd(self):</pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        A property that returns the command that will be executed.</pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        &quot;&quot;&quot;</pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>    def tag(self, tokens):</pre></li>
+                
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        # This function should return list of tuple rather than list of list</pre></li>
+                
+                </ol>
+              
+              <ol start="84" class="context-line">
+                <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>
+        return sum(self.tag_sents([tokens]), [])</pre> <span>...</span></li></ol>
+              
+                <ol start='85' class="post-context" id="post140566366041656">
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>    def tag_sents(self, sentences):</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        encoding = self._encoding</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        default_options = &#39; &#39;.join(_java_options)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre>        config_java(options=self.java_options, verbose=False)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041656', 'post140566366041656')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366041656')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366041656">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;nltk.tag.stanford.StanfordNERTagger object at 0x7fd828554f10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>tokens</td>
+                    <td class="code"><pre>[u&#39;&quot;hello&#39;, u&#39;world&quot;&#39;]</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/usr/local/lib/python2.7/dist-packages/nltk/tag/stanford.py</code> in <code>tag_sents</code>
+
+          
+            <div class="context" id="c140566366041800">
+              
+                <ol start="100" class="pre-context" id="pre140566366041800">
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        if isinstance(_input, text_type) and encoding:</pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>            _input = _input.encode(encoding)</pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        _input_fh.write(_input)</pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        _input_fh.close()</pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        # Run the tagger and get the output</pre></li>
+                
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        stanpos_output, _stderr = java(cmd, classpath=self._stanford_jar,</pre></li>
+                
+                </ol>
+              
+              <ol start="107" class="context-line">
+                <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>
+                                       stdout=PIPE, stderr=PIPE)</pre> <span>...</span></li></ol>
+              
+                <ol start='108' class="post-context" id="post140566366041800">
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        stanpos_output = stanpos_output.decode(encoding)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        # Delete the temporary file</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        os.unlink(self._input_file_path)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366041800', 'post140566366041800')"><pre>        # Return java configurations to their default values</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366041800')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366041800">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>_input</td>
+                    <td class="code"><pre>&#39;&quot;hello world&quot;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>_input_fh</td>
+                    <td class="code"><pre>&lt;closed file &#39;&lt;fdopen&gt;&#39;, mode &#39;wb&#39; at 0x7fd82bc85540&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>cmd</td>
+                    <td class="code"><pre>[&#39;edu.stanford.nlp.ie.crf.CRFClassifier&#39;,
+ &#39;-loadClassifier&#39;,
+ &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz&#39;,
+ &#39;-textFile&#39;,
+ &#39;/tmp/tmpSp3laJ&#39;,
+ &#39;-outputFormat&#39;,
+ &#39;slashTags&#39;,
+ &#39;-tokenizerFactory&#39;,
+ &#39;edu.stanford.nlp.process.WhitespaceTokenizer&#39;,
+ &#39;-tokenizerOptions&#39;,
+ &#39;&quot;tokenizeNLs=false&quot;&#39;,
+ &#39;-encoding&#39;,
+ &#39;utf8&#39;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>default_options</td>
+                    <td class="code"><pre>&#39;&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>encoding</td>
+                    <td class="code"><pre>&#39;utf8&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;nltk.tag.stanford.StanfordNERTagger object at 0x7fd828554f10&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>sentences</td>
+                    <td class="code"><pre>[[u&#39;&quot;hello&#39;, u&#39;world&quot;&#39;]]</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        
+        <li class="frame user">
+          <code>/usr/local/lib/python2.7/dist-packages/nltk/internals.py</code> in <code>java</code>
+
+          
+            <div class="context" id="c140566366041008">
+              
+                <ol start="129" class="pre-context" id="pre140566366041008">
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    p = subprocess.Popen(cmd, stdin=stdin, stdout=stdout, stderr=stderr)</pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    if not blocking: return p</pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    (stdout, stderr) = p.communicate()</pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    # Check the return code.</pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    if p.returncode != 0:</pre></li>
+                
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>        print(_decode_stdoutdata(stderr))</pre></li>
+                
+                </ol>
+              
+              <ol start="136" class="context-line">
+                <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>
+        raise OSError(&#39;Java command failed : &#39; + str(cmd))</pre> <span>...</span></li></ol>
+              
+                <ol start='137' class="post-context" id="post140566366041008">
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    return (stdout, stderr)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>if 0:</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    #config_java(options=&#39;-Xmx512m&#39;)</pre></li>
+                  
+                  <li onclick="toggle('pre140566366041008', 'post140566366041008')"><pre>    # Write:</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '140566366041008')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v140566366041008">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>blocking</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>classpath</td>
+                    <td class="code"><pre>&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>classpaths</td>
+                    <td class="code"><pre>[&#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>cmd</td>
+                    <td class="code"><pre>[u&#39;/usr/bin/java&#39;,
+ &#39;-mx1000m&#39;,
+ &#39;-cp&#39;,
+ &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;,
+ &#39;edu.stanford.nlp.ie.crf.CRFClassifier&#39;,
+ &#39;-loadClassifier&#39;,
+ &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz&#39;,
+ &#39;-textFile&#39;,
+ &#39;/tmp/tmpSp3laJ&#39;,
+ &#39;-outputFormat&#39;,
+ &#39;slashTags&#39;,
+ &#39;-tokenizerFactory&#39;,
+ &#39;edu.stanford.nlp.process.WhitespaceTokenizer&#39;,
+ &#39;-tokenizerOptions&#39;,
+ &#39;&quot;tokenizeNLs=false&quot;&#39;,
+ &#39;-encoding&#39;,
+ &#39;utf8&#39;]</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>p</td>
+                    <td class="code"><pre>&lt;subprocess.Popen object at 0x7fd828632950&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>stderr</td>
+                    <td class="code"><pre>&#39;CRFClassifier invoked on Thu Dec 07 13:19:04 UTC 2017 with arguments:\n   -loadClassifier /home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz -textFile /tmp/tmpSp3laJ -outputFormat slashTags -tokenizerFactory edu.stanford.nlp.process.WhitespaceTokenizer -tokenizerOptions &quot;tokenizeNLs=false&quot; -encoding utf8\ntokenizerFactory=edu.stanford.nlp.process.WhitespaceTokenizer\ntokenizerOptions=&quot;tokenizeNLs=false&quot;\nloadClassifier=/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz\nencoding=utf8\ntextFile=/tmp/tmpSp3laJ\noutputFormat=slashTags\nLoading classifier from /home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz ... &#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>stdin</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>stdout</td>
+                    <td class="code"><pre>&#39;&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+    </ul>
+  </div>
+  <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
+
+  <div id="pastebinTraceback" class="pastebin">
+    <input type="hidden" name="language" value="PythonConsole">
+    <input type="hidden" name="title"
+      value="OSError at /text_parser/add_article">
+    <input type="hidden" name="source" value="Django Dpaste Agent">
+    <input type="hidden" name="poster" value="Django">
+    <textarea name="content" id="traceback_area" cols="140" rows="25">
+Environment:
+
+
+Request Method: POST
+Request URL: http://127.0.0.1/text_parser/add_article
+
+Django Version: 1.11.7
+Python Version: 2.7.13
+Installed Applications:
+[&#39;django.contrib.admin&#39;,
+ &#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.staticfiles&#39;,
+ &#39;text_parser.apps.TextParserConfig&#39;]
+Installed Middleware:
+[&#39;django.middleware.security.SecurityMiddleware&#39;,
+ &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;]
+
+
+
+Traceback:
+
+File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/exception.py" in inner
+  41.             response = get_response(request)
+
+File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py" in _get_response
+  187.                 response = self.process_exception_by_middleware(e, request)
+
+File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py" in _get_response
+  185.                 response = wrapped_callback(request, *callback_args, **callback_kwargs)
+
+File "/home/emad/text_parser/bs-project/text_parser/views.py" in add_article
+  30.             t.save_keywords(topic)
+
+File "/home/emad/text_parser/bs-project/text_parser/models.py" in save_keywords
+  15.         keywords = RUN.main(self.text)
+
+File "/home/emad/text_parser/bs-project/keywordfinder/RUN.py" in main
+  20.     return extract_keywords(text, keyword_classifier, top_k, preload)
+
+File "/home/emad/text_parser/bs-project/keywordfinder/keywordextraction.py" in extract_keywords
+  274.     candidate_keywords = generate_candidates(text)
+
+File "/home/emad/text_parser/bs-project/keywordfinder/keywordextraction.py" in generate_candidates
+  247.     named_entities = get_namedentities(text)
+
+File "/home/emad/text_parser/bs-project/keywordfinder/features.py" in get_namedentities
+  35.     ner_tagged = st.tag(text.lower().split())
+
+File "/usr/local/lib/python2.7/dist-packages/nltk/tag/stanford.py" in tag
+  84.         return sum(self.tag_sents([tokens]), [])
+
+File "/usr/local/lib/python2.7/dist-packages/nltk/tag/stanford.py" in tag_sents
+  107.                                        stdout=PIPE, stderr=PIPE)
+
+File "/usr/local/lib/python2.7/dist-packages/nltk/internals.py" in java
+  136.         raise OSError(&#39;Java command failed : &#39; + str(cmd))
+
+Exception Type: OSError at /text_parser/add_article
+Exception Value: Java command failed : [u&#39;/usr/bin/java&#39;, &#39;-mx1000m&#39;, &#39;-cp&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/stanford-ner.jar&#39;, &#39;edu.stanford.nlp.ie.crf.CRFClassifier&#39;, &#39;-loadClassifier&#39;, &#39;/home/emad/text_parser/bs-project/keywordfinder/utils/english.conll.4class.caseless.distsim.crf.ser.gz&#39;, &#39;-textFile&#39;, &#39;/tmp/tmpSp3laJ&#39;, &#39;-outputFormat&#39;, &#39;slashTags&#39;, &#39;-tokenizerFactory&#39;, &#39;edu.stanford.nlp.process.WhitespaceTokenizer&#39;, &#39;-tokenizerOptions&#39;, &#39;&quot;tokenizeNLs=false&quot;&#39;, &#39;-encoding&#39;, &#39;utf8&#39;]
+</textarea>
+  <br><br>
+  <input type="submit" value="Share this traceback on a public website">
+  </div>
+</form>
+</div>
+
+
+
+<div id="requestinfo">
+  <h2>Request information</h2>
+
+
+  
+    <h3 id="user-info">USER</h3>
+    <p>AnonymousUser</p>
+  
+
+  <h3 id="get-info">GET</h3>
+  
+    <p>No GET data</p>
+  
+
+  <h3 id="post-info">POST</h3>
+  
+    <table class="req">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td>topic</td>
+            <td class="code"><pre>u&#39;tech&#39;</pre></td>
+          </tr>
+        
+          <tr>
+            <td>text</td>
+            <td class="code"><pre>u&#39;&quot;hello world&quot;&#39;</pre></td>
+          </tr>
+        
+      </tbody>
+    </table>
+  
+  <h3 id="files-info">FILES</h3>
+  
+    <p>No FILES data</p>
+  
+
+
+  <h3 id="cookie-info">COOKIES</h3>
+  
+    <p>No cookie data</p>
+  
+
+  <h3 id="meta-info">META</h3>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>CONTENT_LENGTH</td>
+          <td class="code"><pre>&#39;29&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTENT_TYPE</td>
+          <td class="code"><pre>&#39;application/x-www-form-urlencoded&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTEXT_DOCUMENT_ROOT</td>
+          <td class="code"><pre>&#39;/var/www/html&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CONTEXT_PREFIX</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DOCUMENT_ROOT</td>
+          <td class="code"><pre>&#39;/var/www/html&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>GATEWAY_INTERFACE</td>
+          <td class="code"><pre>&#39;CGI/1.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_ACCEPT</td>
+          <td class="code"><pre>&#39;*/*&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_HOST</td>
+          <td class="code"><pre>&#39;127.0.0.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>HTTP_USER_AGENT</td>
+          <td class="code"><pre>&#39;curl/7.21.0 (x86_64-pc-linux-gnu) libcurl/7.21.0 OpenSSL/0.9.8o zlib/1.2.8 libidn/1.15 libssh2/1.2.6&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PATH_INFO</td>
+          <td class="code"><pre>u&#39;/text_parser/add_article&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PATH_TRANSLATED</td>
+          <td class="code"><pre>&#39;/home/emad/text_parser/bs-project/BSProject/wsgi.py/text_parser/add_article&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>QUERY_STRING</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_ADDR</td>
+          <td class="code"><pre>&#39;127.0.0.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REMOTE_PORT</td>
+          <td class="code"><pre>&#39;62442&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REQUEST_METHOD</td>
+          <td class="code"><pre>&#39;POST&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REQUEST_SCHEME</td>
+          <td class="code"><pre>&#39;http&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>REQUEST_URI</td>
+          <td class="code"><pre>&#39;/text_parser/add_article&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SCRIPT_FILENAME</td>
+          <td class="code"><pre>&#39;/home/emad/text_parser/bs-project/BSProject/wsgi.py&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SCRIPT_NAME</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_ADDR</td>
+          <td class="code"><pre>&#39;127.0.0.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_ADMIN</td>
+          <td class="code"><pre>&#39;webmaster@localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_NAME</td>
+          <td class="code"><pre>&#39;127.0.0.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PORT</td>
+          <td class="code"><pre>&#39;80&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_PROTOCOL</td>
+          <td class="code"><pre>&#39;HTTP/1.1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_SIGNATURE</td>
+          <td class="code"><pre>&#39;&lt;address&gt;Apache/2.4.25 (Debian) Server at 127.0.0.1 Port 80&lt;/address&gt;\n&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_SOFTWARE</td>
+          <td class="code"><pre>&#39;Apache/2.4.25 (Debian)&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>apache.version</td>
+          <td class="code"><pre>(2, 4, 25)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.application_group</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.callable_object</td>
+          <td class="code"><pre>&#39;application&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.daemon_connects</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.daemon_restarts</td>
+          <td class="code"><pre>&#39;0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.daemon_start</td>
+          <td class="code"><pre>&#39;1512652737146747&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.enable_sendfile</td>
+          <td class="code"><pre>&#39;0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.handler_script</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.ignore_activity</td>
+          <td class="code"><pre>&#39;0&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.listener_host</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.listener_port</td>
+          <td class="code"><pre>&#39;80&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.path_info</td>
+          <td class="code"><pre>&#39;/text_parser/add_article&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.process_group</td>
+          <td class="code"><pre>&#39;BSProject&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.queue_start</td>
+          <td class="code"><pre>&#39;1512652737111019&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.request_handler</td>
+          <td class="code"><pre>&#39;wsgi-script&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.request_id</td>
+          <td class="code"><pre>&#39;r/AI6Z/L91g&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.request_start</td>
+          <td class="code"><pre>&#39;1512652736622767&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.script_name</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.script_reloading</td>
+          <td class="code"><pre>&#39;1&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.script_start</td>
+          <td class="code"><pre>&#39;1512652737146858&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.thread_id</td>
+          <td class="code"><pre>2</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.thread_requests</td>
+          <td class="code"><pre>0L</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.total_requests</td>
+          <td class="code"><pre>1L</pre></td>
+        </tr>
+      
+        <tr>
+          <td>mod_wsgi.version</td>
+          <td class="code"><pre>(4, 5, 11)</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.errors</td>
+          <td class="code"><pre>&lt;mod_wsgi.Log object at 0x7fd8286f2300&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.file_wrapper</td>
+          <td class="code"><pre>&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.input</td>
+          <td class="code"><pre>&lt;mod_wsgi.Input object at 0x7fd82bc1e570&gt;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multiprocess</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.multithread</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.run_once</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.url_scheme</td>
+          <td class="code"><pre>&#39;http&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>wsgi.version</td>
+          <td class="code"><pre>(1, 0)</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+  <h3 id="settings-info">Settings</h3>
+  <h4>Using settings module <code>BSProject.settings</code></h4>
+  <table class="req">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>ABSOLUTE_URL_OVERRIDES</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ADMINS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ALLOWED_HOSTS</td>
+          <td class="code"><pre>[&#39;*&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>APPEND_SLASH</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTHENTICATION_BACKENDS</td>
+          <td class="code"><pre>[u&#39;django.contrib.auth.backends.ModelBackend&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTH_PASSWORD_VALIDATORS</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>AUTH_USER_MODEL</td>
+          <td class="code"><pre>u&#39;auth.User&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>BASE_DIR</td>
+          <td class="code"><pre>&#39;/home/emad/text_parser/bs-project&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHES</td>
+          <td class="code"><pre>{u&#39;default&#39;: {u&#39;BACKEND&#39;: u&#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_ALIAS</td>
+          <td class="code"><pre>u&#39;default&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CACHE_MIDDLEWARE_SECONDS</td>
+          <td class="code"><pre>600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_AGE</td>
+          <td class="code"><pre>31449600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_NAME</td>
+          <td class="code"><pre>u&#39;csrftoken&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_PATH</td>
+          <td class="code"><pre>u&#39;/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_FAILURE_VIEW</td>
+          <td class="code"><pre>u&#39;django.views.csrf.csrf_failure&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_HEADER_NAME</td>
+          <td class="code"><pre>u&#39;HTTP_X_CSRFTOKEN&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_TRUSTED_ORIGINS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>CSRF_USE_SESSIONS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASES</td>
+          <td class="code"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+             &#39;AUTOCOMMIT&#39;: True,
+             &#39;CONN_MAX_AGE&#39;: 0,
+             &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+             &#39;HOST&#39;: &#39;localhost&#39;,
+             &#39;NAME&#39;: &#39;bs_project&#39;,
+             &#39;OPTIONS&#39;: {},
+             &#39;PASSWORD&#39;: u&#39;********************&#39;,
+             &#39;PORT&#39;: &#39;&#39;,
+             &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                      &#39;COLLATION&#39;: None,
+                      &#39;MIRROR&#39;: None,
+                      &#39;NAME&#39;: None},
+             &#39;TIME_ZONE&#39;: None,
+             &#39;USER&#39;: &#39;bs_project_user&#39;}}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATABASE_ROUTERS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATA_UPLOAD_MAX_MEMORY_SIZE</td>
+          <td class="code"><pre>2621440</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATA_UPLOAD_MAX_NUMBER_FIELDS</td>
+          <td class="code"><pre>1000</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_FORMAT</td>
+          <td class="code"><pre>u&#39;N j, Y, P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATETIME_INPUT_FORMATS</td>
+          <td class="code"><pre>[u&#39;%Y-%m-%d %H:%M:%S&#39;,
+ u&#39;%Y-%m-%d %H:%M:%S.%f&#39;,
+ u&#39;%Y-%m-%d %H:%M&#39;,
+ u&#39;%Y-%m-%d&#39;,
+ u&#39;%m/%d/%Y %H:%M:%S&#39;,
+ u&#39;%m/%d/%Y %H:%M:%S.%f&#39;,
+ u&#39;%m/%d/%Y %H:%M&#39;,
+ u&#39;%m/%d/%Y&#39;,
+ u&#39;%m/%d/%y %H:%M:%S&#39;,
+ u&#39;%m/%d/%y %H:%M:%S.%f&#39;,
+ u&#39;%m/%d/%y %H:%M&#39;,
+ u&#39;%m/%d/%y&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_FORMAT</td>
+          <td class="code"><pre>u&#39;N j, Y&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DATE_INPUT_FORMATS</td>
+          <td class="code"><pre>[u&#39;%Y-%m-%d&#39;,
+ u&#39;%m/%d/%Y&#39;,
+ u&#39;%m/%d/%y&#39;,
+ u&#39;%b %d %Y&#39;,
+ u&#39;%b %d, %Y&#39;,
+ u&#39;%d %b %Y&#39;,
+ u&#39;%d %b, %Y&#39;,
+ u&#39;%B %d %Y&#39;,
+ u&#39;%B %d, %Y&#39;,
+ u&#39;%d %B %Y&#39;,
+ u&#39;%d %B, %Y&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DECIMAL_SEPARATOR</td>
+          <td class="code"><pre>u&#39;.&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_CHARSET</td>
+          <td class="code"><pre>u&#39;utf-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_CONTENT_TYPE</td>
+          <td class="code"><pre>u&#39;text/html&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
+          <td class="code"><pre>u&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FILE_STORAGE</td>
+          <td class="code"><pre>u&#39;django.core.files.storage.FileSystemStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_FROM_EMAIL</td>
+          <td class="code"><pre>u&#39;webmaster@localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_INDEX_TABLESPACE</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DEFAULT_TABLESPACE</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>DISALLOWED_USER_AGENTS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_BACKEND</td>
+          <td class="code"><pre>u&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST</td>
+          <td class="code"><pre>u&#39;localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_PASSWORD</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_HOST_USER</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_PORT</td>
+          <td class="code"><pre>25</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SSL_CERTFILE</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SSL_KEYFILE</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_SUBJECT_PREFIX</td>
+          <td class="code"><pre>u&#39;[Django] &#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_TIMEOUT</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_LOCALTIME</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_SSL</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>EMAIL_USE_TLS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_CHARSET</td>
+          <td class="code"><pre>u&#39;utf-8&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_HANDLERS</td>
+          <td class="code"><pre>[u&#39;django.core.files.uploadhandler.MemoryFileUploadHandler&#39;,
+ u&#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
+          <td class="code"><pre>2621440</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_PERMISSIONS</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FILE_UPLOAD_TEMP_DIR</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIRST_DAY_OF_WEEK</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FIXTURE_DIRS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORCE_SCRIPT_NAME</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORMAT_MODULE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>FORM_RENDERER</td>
+          <td class="code"><pre>u&#39;django.forms.renderers.DjangoTemplates&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>IGNORABLE_404_URLS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INSTALLED_APPS</td>
+          <td class="code"><pre>[&#39;django.contrib.admin&#39;,
+ &#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.staticfiles&#39;,
+ &#39;text_parser.apps.TextParserConfig&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>INTERNAL_IPS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES</td>
+          <td class="code"><pre>[(u&#39;af&#39;, u&#39;Afrikaans&#39;),
+ (u&#39;ar&#39;, u&#39;Arabic&#39;),
+ (u&#39;ast&#39;, u&#39;Asturian&#39;),
+ (u&#39;az&#39;, u&#39;Azerbaijani&#39;),
+ (u&#39;bg&#39;, u&#39;Bulgarian&#39;),
+ (u&#39;be&#39;, u&#39;Belarusian&#39;),
+ (u&#39;bn&#39;, u&#39;Bengali&#39;),
+ (u&#39;br&#39;, u&#39;Breton&#39;),
+ (u&#39;bs&#39;, u&#39;Bosnian&#39;),
+ (u&#39;ca&#39;, u&#39;Catalan&#39;),
+ (u&#39;cs&#39;, u&#39;Czech&#39;),
+ (u&#39;cy&#39;, u&#39;Welsh&#39;),
+ (u&#39;da&#39;, u&#39;Danish&#39;),
+ (u&#39;de&#39;, u&#39;German&#39;),
+ (u&#39;dsb&#39;, u&#39;Lower Sorbian&#39;),
+ (u&#39;el&#39;, u&#39;Greek&#39;),
+ (u&#39;en&#39;, u&#39;English&#39;),
+ (u&#39;en-au&#39;, u&#39;Australian English&#39;),
+ (u&#39;en-gb&#39;, u&#39;British English&#39;),
+ (u&#39;eo&#39;, u&#39;Esperanto&#39;),
+ (u&#39;es&#39;, u&#39;Spanish&#39;),
+ (u&#39;es-ar&#39;, u&#39;Argentinian Spanish&#39;),
+ (u&#39;es-co&#39;, u&#39;Colombian Spanish&#39;),
+ (u&#39;es-mx&#39;, u&#39;Mexican Spanish&#39;),
+ (u&#39;es-ni&#39;, u&#39;Nicaraguan Spanish&#39;),
+ (u&#39;es-ve&#39;, u&#39;Venezuelan Spanish&#39;),
+ (u&#39;et&#39;, u&#39;Estonian&#39;),
+ (u&#39;eu&#39;, u&#39;Basque&#39;),
+ (u&#39;fa&#39;, u&#39;Persian&#39;),
+ (u&#39;fi&#39;, u&#39;Finnish&#39;),
+ (u&#39;fr&#39;, u&#39;French&#39;),
+ (u&#39;fy&#39;, u&#39;Frisian&#39;),
+ (u&#39;ga&#39;, u&#39;Irish&#39;),
+ (u&#39;gd&#39;, u&#39;Scottish Gaelic&#39;),
+ (u&#39;gl&#39;, u&#39;Galician&#39;),
+ (u&#39;he&#39;, u&#39;Hebrew&#39;),
+ (u&#39;hi&#39;, u&#39;Hindi&#39;),
+ (u&#39;hr&#39;, u&#39;Croatian&#39;),
+ (u&#39;hsb&#39;, u&#39;Upper Sorbian&#39;),
+ (u&#39;hu&#39;, u&#39;Hungarian&#39;),
+ (u&#39;ia&#39;, u&#39;Interlingua&#39;),
+ (u&#39;id&#39;, u&#39;Indonesian&#39;),
+ (u&#39;io&#39;, u&#39;Ido&#39;),
+ (u&#39;is&#39;, u&#39;Icelandic&#39;),
+ (u&#39;it&#39;, u&#39;Italian&#39;),
+ (u&#39;ja&#39;, u&#39;Japanese&#39;),
+ (u&#39;ka&#39;, u&#39;Georgian&#39;),
+ (u&#39;kk&#39;, u&#39;Kazakh&#39;),
+ (u&#39;km&#39;, u&#39;Khmer&#39;),
+ (u&#39;kn&#39;, u&#39;Kannada&#39;),
+ (u&#39;ko&#39;, u&#39;Korean&#39;),
+ (u&#39;lb&#39;, u&#39;Luxembourgish&#39;),
+ (u&#39;lt&#39;, u&#39;Lithuanian&#39;),
+ (u&#39;lv&#39;, u&#39;Latvian&#39;),
+ (u&#39;mk&#39;, u&#39;Macedonian&#39;),
+ (u&#39;ml&#39;, u&#39;Malayalam&#39;),
+ (u&#39;mn&#39;, u&#39;Mongolian&#39;),
+ (u&#39;mr&#39;, u&#39;Marathi&#39;),
+ (u&#39;my&#39;, u&#39;Burmese&#39;),
+ (u&#39;nb&#39;, u&#39;Norwegian Bokm\xe5l&#39;),
+ (u&#39;ne&#39;, u&#39;Nepali&#39;),
+ (u&#39;nl&#39;, u&#39;Dutch&#39;),
+ (u&#39;nn&#39;, u&#39;Norwegian Nynorsk&#39;),
+ (u&#39;os&#39;, u&#39;Ossetic&#39;),
+ (u&#39;pa&#39;, u&#39;Punjabi&#39;),
+ (u&#39;pl&#39;, u&#39;Polish&#39;),
+ (u&#39;pt&#39;, u&#39;Portuguese&#39;),
+ (u&#39;pt-br&#39;, u&#39;Brazilian Portuguese&#39;),
+ (u&#39;ro&#39;, u&#39;Romanian&#39;),
+ (u&#39;ru&#39;, u&#39;Russian&#39;),
+ (u&#39;sk&#39;, u&#39;Slovak&#39;),
+ (u&#39;sl&#39;, u&#39;Slovenian&#39;),
+ (u&#39;sq&#39;, u&#39;Albanian&#39;),
+ (u&#39;sr&#39;, u&#39;Serbian&#39;),
+ (u&#39;sr-latn&#39;, u&#39;Serbian Latin&#39;),
+ (u&#39;sv&#39;, u&#39;Swedish&#39;),
+ (u&#39;sw&#39;, u&#39;Swahili&#39;),
+ (u&#39;ta&#39;, u&#39;Tamil&#39;),
+ (u&#39;te&#39;, u&#39;Telugu&#39;),
+ (u&#39;th&#39;, u&#39;Thai&#39;),
+ (u&#39;tr&#39;, u&#39;Turkish&#39;),
+ (u&#39;tt&#39;, u&#39;Tatar&#39;),
+ (u&#39;udm&#39;, u&#39;Udmurt&#39;),
+ (u&#39;uk&#39;, u&#39;Ukrainian&#39;),
+ (u&#39;ur&#39;, u&#39;Urdu&#39;),
+ (u&#39;vi&#39;, u&#39;Vietnamese&#39;),
+ (u&#39;zh-hans&#39;, u&#39;Simplified Chinese&#39;),
+ (u&#39;zh-hant&#39;, u&#39;Traditional Chinese&#39;)]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGES_BIDI</td>
+          <td class="code"><pre>[u&#39;he&#39;, u&#39;ar&#39;, u&#39;fa&#39;, u&#39;ur&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_CODE</td>
+          <td class="code"><pre>&#39;en-us&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_AGE</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_NAME</td>
+          <td class="code"><pre>u&#39;django_language&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LANGUAGE_COOKIE_PATH</td>
+          <td class="code"><pre>u&#39;/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOCALE_PATHS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGGING_CONFIG</td>
+          <td class="code"><pre>u&#39;logging.config.dictConfig&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_REDIRECT_URL</td>
+          <td class="code"><pre>u&#39;/accounts/profile/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGIN_URL</td>
+          <td class="code"><pre>u&#39;/accounts/login/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>LOGOUT_REDIRECT_URL</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MANAGERS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_ROOT</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MEDIA_URL</td>
+          <td class="code"><pre>u&#39;&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MESSAGE_STORAGE</td>
+          <td class="code"><pre>u&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIDDLEWARE</td>
+          <td class="code"><pre>[&#39;django.middleware.security.SecurityMiddleware&#39;,
+ &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIDDLEWARE_CLASSES</td>
+          <td class="code"><pre>[u&#39;django.middleware.common.CommonMiddleware&#39;,
+ u&#39;django.middleware.csrf.CsrfViewMiddleware&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MIGRATION_MODULES</td>
+          <td class="code"><pre>{}</pre></td>
+        </tr>
+      
+        <tr>
+          <td>MONTH_DAY_FORMAT</td>
+          <td class="code"><pre>u&#39;F j&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>NUMBER_GROUPING</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_HASHERS</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PASSWORD_RESET_TIMEOUT_DAYS</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>PREPEND_WWW</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>ROOT_URLCONF</td>
+          <td class="code"><pre>&#39;BSProject.urls&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECRET_KEY</td>
+          <td class="code"><pre>u&#39;********************&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_BROWSER_XSS_FILTER</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_CONTENT_TYPE_NOSNIFF</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_PRELOAD</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_HSTS_SECONDS</td>
+          <td class="code"><pre>0</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_PROXY_SSL_HEADER</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_REDIRECT_EXEMPT</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_SSL_HOST</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SECURE_SSL_REDIRECT</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SERVER_EMAIL</td>
+          <td class="code"><pre>u&#39;root@localhost&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_CACHE_ALIAS</td>
+          <td class="code"><pre>u&#39;default&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_AGE</td>
+          <td class="code"><pre>1209600</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_DOMAIN</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_HTTPONLY</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_NAME</td>
+          <td class="code"><pre>u&#39;sessionid&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_PATH</td>
+          <td class="code"><pre>u&#39;/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_COOKIE_SECURE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_ENGINE</td>
+          <td class="code"><pre>u&#39;django.contrib.sessions.backends.db&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_FILE_PATH</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SAVE_EVERY_REQUEST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SESSION_SERIALIZER</td>
+          <td class="code"><pre>u&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SETTINGS_MODULE</td>
+          <td class="code"><pre>&#39;BSProject.settings&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATETIME_FORMAT</td>
+          <td class="code"><pre>u&#39;m/d/Y P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SHORT_DATE_FORMAT</td>
+          <td class="code"><pre>u&#39;m/d/Y&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SIGNING_BACKEND</td>
+          <td class="code"><pre>u&#39;django.core.signing.TimestampSigner&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>SILENCED_SYSTEM_CHECKS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_DIRS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_FINDERS</td>
+          <td class="code"><pre>[u&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,
+ u&#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATICFILES_STORAGE</td>
+          <td class="code"><pre>u&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_ROOT</td>
+          <td class="code"><pre>None</pre></td>
+        </tr>
+      
+        <tr>
+          <td>STATIC_URL</td>
+          <td class="code"><pre>&#39;/static/&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEMPLATES</td>
+          <td class="code"><pre>[{&#39;APP_DIRS&#39;: True,
+  &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+  &#39;DIRS&#39;: [&#39;/home/emad/text_parser/bs-project/templates&#39;],
+  &#39;OPTIONS&#39;: {&#39;context_processors&#39;: [&#39;django.template.context_processors.debug&#39;,
+                                     &#39;django.template.context_processors.request&#39;,
+                                     &#39;django.contrib.auth.context_processors.auth&#39;,
+                                     &#39;django.contrib.messages.context_processors.messages&#39;]}}]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEST_NON_SERIALIZED_APPS</td>
+          <td class="code"><pre>[]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TEST_RUNNER</td>
+          <td class="code"><pre>u&#39;django.test.runner.DiscoverRunner&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>u&#39;,&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_FORMAT</td>
+          <td class="code"><pre>u&#39;P&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_INPUT_FORMATS</td>
+          <td class="code"><pre>[u&#39;%H:%M:%S&#39;, u&#39;%H:%M:%S.%f&#39;, u&#39;%H:%M&#39;]</pre></td>
+        </tr>
+      
+        <tr>
+          <td>TIME_ZONE</td>
+          <td class="code"><pre>&#39;UTC&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_ETAGS</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_I18N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_L10N</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_THOUSAND_SEPARATOR</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_TZ</td>
+          <td class="code"><pre>True</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_X_FORWARDED_HOST</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>USE_X_FORWARDED_PORT</td>
+          <td class="code"><pre>False</pre></td>
+        </tr>
+      
+        <tr>
+          <td>WSGI_APPLICATION</td>
+          <td class="code"><pre>&#39;BSProject.wsgi.application&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>X_FRAME_OPTIONS</td>
+          <td class="code"><pre>u&#39;SAMEORIGIN&#39;</pre></td>
+        </tr>
+      
+        <tr>
+          <td>YEAR_MONTH_FORMAT</td>
+          <td class="code"><pre>u&#39;F Y&#39;</pre></td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+</div>
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in your
+      Django settings file. Change that to <code>False</code>, and Django will
+      display a standard page generated by the handler for this status code.
+    </p>
+  </div>
+
+</body>
+</html>

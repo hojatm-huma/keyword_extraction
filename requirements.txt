@@ -1,5 +1,5 @@
 numpy
-nltk && stopwords
+nltk && stopwords && punkt
 gensim
 sklearn
 wikiwords

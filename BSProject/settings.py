@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bjmfh7$rrx!d@6=-g98*hh+oei*o=q0t_ov)70p=t5_ba#zq$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'RamMonitoring.ram_monitoring.ram_monitoring',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,12 +78,9 @@ WSGI_APPLICATION = 'BSProject.wsgi.application'
 
 DATABASES = {
     'default': {
-                'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'bs_project',
-                'USER': 'bs_project_user',
-                'PASSWORD': 'itsemadopen',
-                'HOST': 'localhost',
-                'PORT': '',
+
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
             }
 }
 

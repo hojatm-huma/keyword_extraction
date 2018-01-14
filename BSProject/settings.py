@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bjmfh7$rrx!d@6=-g98*hh+oei*o=q0t_ov)70p=t5_ba#zq$r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -78,9 +78,12 @@ WSGI_APPLICATION = 'BSProject.wsgi.application'
 
 DATABASES = {
     'default': {
-
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'bsproject',
+		'USER': 'bsproject',
+		'PASSWORD': 'bsproject',
+		'HOST': 'localhost',
+		'PORT': '',
             }
 }
 

@@ -4,11 +4,12 @@ from random import randint
 from sets import Set
 
 import nltk
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum, Max, F, Value
 from django.http import Http404
 from django.http import JsonResponse
 
-from text_parser.models import Text, Keyword, GameId, Site
+from text_parser.models import Text, Keyword, GameId, Site, Topic
 
 
 def add_article(request):
@@ -26,6 +27,7 @@ def add_article(request):
         if text is not None and topic is not None:
             t = Text(text=text)
             t.save()
+            topic = Topic(topic=topic).get_and_insert()
 
             t.save_keywords(topic)
 
@@ -58,14 +60,18 @@ def get_keywords(request):
         if topic is not None:
             # if update_from_web_check():
             #     update_from_web(topic)
+            try:
+                topic = Topic.objects.get(topic=topic)
 
-            keywords = Keyword.objects.filter(topic=topic).values('keyword').annotate(Sum('rank')).order_by(
-                '-rank__sum')
-            response = []
-            for keyword in keywords:
-                response.append((keyword.get('keyword'), keyword.get('rank__sum')))
+                keywords = Keyword.objects.filter(topic=topic).values('keyword').annotate(Sum('rank')).order_by(
+                    '-rank__sum')
+                response = []
+                for keyword in keywords:
+                    response.append((keyword.get('keyword'), keyword.get('rank__sum')))
 
-            return JsonResponse({'keywords': response}, status=200)
+                return JsonResponse({'keywords': response}, status=200)
+            except ObjectDoesNotExist:
+                return JsonResponse({'msg': 'topic does not exists.'}, status=400)
         else:
             return JsonResponse({'msg': 'bad input.'}, status=400)
     else:
@@ -87,6 +93,7 @@ def new_game(request):
         try:
             if topic is None:
                 raise ValueError
+            topic = Topic.objects.get(topic=topic)
 
             keywords = json.loads(keywords)
 
@@ -103,6 +110,8 @@ def new_game(request):
 
         except ValueError:
             return JsonResponse({'msg': 'bad input.'}, status=400)
+        except ObjectDoesNotExist:
+            return JsonResponse({'msg': 'topic does not exists.'}, status=400)
     else:
         return JsonResponse({'msg': 'just POST!'}, status=400)
 
@@ -239,7 +248,6 @@ def is_sentence_complete(request):
             texts = game_id.get_aggregated_text()
             sentences = nltk.data.load('tokenizers/punkt/english.pickle').tokenize(texts)
             for s in sentences:
-                print '##', s
                 if s == sentence:
                     return JsonResponse({'is_sentence_correct': True}, status=200)
 
@@ -253,6 +261,17 @@ def is_sentence_complete(request):
             return JsonResponse({'msg': 'bad input'}, status=400)
     else:
         return JsonResponse({'msg': 'just POST'}, status=400)
+
+
+def get_topics(request):
+    """
+    it searches for exact match of given sentence in this game's texts.
+
+    :param request: game_id
+                    sentence --> sentence to be searched for
+    :return: {'is_sentence_correct':true} | {'is_sentence_correct':false}
+    """
+    return JsonResponse({'topics':[topic.topic for topic in Topic.objects.all()]}, status=200)
 
 
 def add_site(request):

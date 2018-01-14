@@ -1,6 +1,8 @@
 numpy
-nltk && stopwords && punkt
+nltk && stopwords && punkt && averaged_perceptron_tagger
 gensim
 sklearn
 wikiwords
 
+
+sudo python -m nltk.downloader -d /usr/local/share/nltk_data 

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
 from keywordfinder import RUN
@@ -18,8 +19,19 @@ class Text(models.Model):
             Keyword(topic=topic, text=self, keyword=keyword[0], rank=keyword[1]).save()
 
 
+class Topic(models.Model):
+    topic = models.CharField(max_length=30)
+
+    def get_and_insert(self):
+        try:
+            t = Topic.objects.get(topic=self.topic)
+            return t
+        except ObjectDoesNotExist:
+            self.save()
+            return self
+
 class Keyword(models.Model):
-    topic = models.CharField(max_length=20)
+    topic = models.ForeignKey(Topic)
     text = models.ForeignKey(Text)
     keyword = models.CharField(max_length=20)
     rank = models.FloatField()

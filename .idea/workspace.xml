@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bfe56166-614d-4f0d-99c5-5dc1668394ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_parser/models.py" afterPath="$PROJECT_DIR$/text_parser/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_parser/urls.py" afterPath="$PROJECT_DIR$/text_parser/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text_parser/views.py" afterPath="$PROJECT_DIR$/text_parser/views.py" />
     </list>
     <ignored path="BSProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -543,12 +540,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515935201771</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="*) added url fetch">
+      <created>1517071938436</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1517071938436</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="-3" width="1317" height="771" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826748" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -609,7 +612,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="*) adding get_topic url&#10;*) migrating to mysql" />
-    <option name="LAST_COMMIT_MESSAGE" value="*) adding get_topic url&#10;*) migrating to mysql" />
+    <MESSAGE value="*) added url fetch" />
+    <option name="LAST_COMMIT_MESSAGE" value="*) added url fetch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

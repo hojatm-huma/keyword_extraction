@@ -49,5 +49,6 @@ class GameId(models.Model):
 
 
 class Site(models.Model):
-    topic = models.CharField(max_length=20)
-    url = models.CharField(max_length=50)
+    topic = models.ForeignKey(Topic, related_name='sites')
+    url = models.CharField(max_length=200)
+    last_fetched_article_date = models.BigIntegerField(null=True)

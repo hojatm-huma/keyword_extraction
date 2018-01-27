@@ -10,5 +10,8 @@ urlpatterns = [
     url(r'get_completed_sentence', views.get_completed_sentence, name='get_completed_sentence'),
     url(r'is_sentence_complete', views.is_sentence_complete, name='is_sentence_complete'),
     url(r'get_topics', views.get_topics, name='get_topics'),
+    url(r'add_site', views.add_site, name='add_site'),
+    url(r'get_sites', views.get_sites, name='get_sites')
+
 ]
 

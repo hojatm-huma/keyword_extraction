@@ -1,8 +1,14 @@
+import subprocess
+from datetime import datetime
 import json
 import operator
 from random import randint
 from sets import Set
+from subprocess import call
+from threading import Thread
+from time import mktime
 
+import feedparser
 import nltk
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum, Max, F, Value
@@ -38,13 +44,34 @@ def add_article(request):
         return JsonResponse({'msg': 'just POST !'}, status=400)
 
 
-# def update_from_web_check():
-#     return randint(0,5) == 3
-# def update_from_web(topic):
-#     sites = Site.objects.filter(topic=topic)
-#     if len(sites) > 0:
-#         index = randint(0, len(sites))
-#         url = sites.get(index)
+def update_from_web_check():
+    return randint(0, 5) == 3
+
+
+def update_from_web(topic):
+    print 'fetching from web'
+    sites = Site.objects.filter(topic=topic)
+    if len(sites) > 0:
+        index = randint(0, len(sites))
+        site = [site for site in sites][index-1]
+        print 'site to fetch:', site.url
+
+        feed = feedparser.parse(site.url)
+        last_feed = feed['entries'][0]
+        last_feed_date = mktime(last_feed['published_parsed'])
+        last_fetched_date = site.last_fetched_article_date
+        if last_fetched_date == None or last_fetched_date < last_feed_date:
+            text = Text(text=last_feed['summary'])
+            text.save()
+            print 'fetched text:', text.text
+
+            text.save_keywords(topic)
+
+            site.last_fetched_article_date = last_feed_date
+            site.save()
+        else:
+            print 'text already fetched'
+
 
 def get_keywords(request):
     """
@@ -58,10 +85,11 @@ def get_keywords(request):
         topic = param.get('topic')
 
         if topic is not None:
-            # if update_from_web_check():
-            #     update_from_web(topic)
             try:
                 topic = Topic.objects.get(topic=topic)
+
+                if update_from_web_check():
+                    Thread(target=update_from_web, args=(topic, )).start()
 
                 keywords = Keyword.objects.filter(topic=topic).values('keyword').annotate(Sum('rank')).order_by(
                     '-rank__sum')
@@ -271,7 +299,7 @@ def get_topics(request):
                     sentence --> sentence to be searched for
     :return: {'is_sentence_correct':true} | {'is_sentence_correct':false}
     """
-    return JsonResponse({'topics':[topic.topic for topic in Topic.objects.all()]}, status=200)
+    return JsonResponse({'topics': [topic.topic for topic in Topic.objects.all()]}, status=200)
 
 
 def add_site(request):
@@ -283,10 +311,27 @@ def add_site(request):
     :return: {'msg':'site added successfully' }
     """
     if request.method == 'POST':
-        url = request.POST.get('url')
-        topic = request.POST.get('topic')
+        url = request.POST.get('url', '')
+        topic = request.POST.get('topic', '')
 
-        Site(topic=topic, url=url).save()
-        return JsonResponse({'msg': 'site added successfully'}, status=2)
+        if len(url) <1 or len(topic)<1:
+            return JsonResponse({'msg':'bad input.'}, status=400)
+
+        topic = Topic(topic=topic).get_and_insert()
+        Site(url=url, topic=topic).save()
+
+        return JsonResponse({'msg':'added succ.'}, status=200)
+
     else:
         return JsonResponse({'msg': 'just POST'}, status=400)
+
+def get_sites(request):
+    response = []
+    for topic in Topic.objects.all():
+        sites = {}
+        sites['topic'] = topic.topic
+        sites['urls'] = [site.url for site in topic.sites.all()]
+
+        response.append(sites)
+
+    return JsonResponse({'sites':response}, status=200)
